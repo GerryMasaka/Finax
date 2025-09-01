@@ -152,7 +152,7 @@ export function ServicesPage() {
               Comprehensive accounting and advisory solutions tailored for individuals, startups, SMEs, 
               and established corporations in Kenya. We provide the expertise you need to grow with confidence.
             </p>
-            <Button size="lg" onClick={() => scrollToSection('contact-form')}>
+            <Button size="lg" onClick={() => window.location.assign('/contact')}>
               Request a Consultation
             </Button>
           </div>

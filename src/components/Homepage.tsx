@@ -77,7 +77,7 @@ export function Homepage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" onClick={() => scrollToSection('contact-form')}>
+                <Button size="lg" onClick={() => window.location.assign('/contact')}>
                   Book an appointment
                 </Button>
                 <Button variant="outline" size="lg" onClick={() => scrollToSection('services-overview')}>

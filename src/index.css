@@ -4070,7 +4070,7 @@
 
   @media (width >= 64rem) {
     .lg\:py-32 {
-      padding-block: calc(var(--spacing) * 32);
+      padding-block: calc(var(--spacing));
     }
   }
 
