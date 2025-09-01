@@ -39,12 +39,13 @@ export function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <Link 
-              to="/"
-              className="text-xl lg:text-2xl font-bold text-primary hover:opacity-80 transition-opacity"
-            >
-              FINAX CONSULT
-            </Link>
+              <Link 
+                to="/"
+                className="hover:opacity-80 transition-opacity"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                <img src="/header.png" alt="Finax Header" className="h-10 lg:h-14 w-auto" />
+              </Link>
           </div>
 
           {/* Desktop Navigation */}

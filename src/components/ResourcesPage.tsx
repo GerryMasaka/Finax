@@ -238,7 +238,7 @@ export function ResourcesPage() {
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                className="border-primary-foreground text-foreground hover:bg-primary-foreground hover:text-primary"
                 onClick={() => window.location.assign('/services')}
               >
                 Explore Our Services

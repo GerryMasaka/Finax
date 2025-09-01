@@ -126,7 +126,7 @@ export function Homepage() {
       </section>
 
       {/* Quote Callout */}
-      <section className="py-20 bg-muted/30">
+      {/* <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <Card className="max-w-4xl mx-auto border-l-4 border-l-primary">
             <CardContent className="p-8 lg:p-12">
@@ -139,7 +139,7 @@ export function Homepage() {
             </CardContent>
           </Card>
         </div>
-      </section>
+      </section> */}
 
       {/* About Preview */}
       <section className="py-20 bg-background">
@@ -163,7 +163,7 @@ export function Homepage() {
                 of experience in accounting, taxation, and business advisory services.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                We pride ourselves on being more than accountants—we are partners in your success, providing 
+                We pride ourselves on being more than accountants. We are partners in your success, providing 
                 personalized solutions that drive growth and ensure compliance.
               </p>
               <Button variant="outline" onClick={() => window.location.assign('/about')}>

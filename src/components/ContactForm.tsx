@@ -1,55 +1,85 @@
-import { useState } from 'react';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
-import { Textarea } from './ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './ui/dialog';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { CheckCircle, Shield } from 'lucide-react';
+import { useState } from "react";
+import emailjs from "emailjs-com";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
+import { Textarea } from "./ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "./ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { CheckCircle, Shield } from "lucide-react";
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
   });
+  const [isHuman, setIsHuman] = useState(false);
 
   const services = [
-    'Tax Preparation',
-    'Accounting', 
-    'Business Advisory',
-    'Payroll Services',
-    'Audit & Assurance',
-    'Training & Support'
+    "Tax Preparation",
+    "Accounting",
+    "Business Advisory",
+    "Payroll Services",
+    "Audit & Assurance",
+    "Training & Support",
   ];
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
+
+    // Use EmailJS credentials from environment variables
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const USER_ID = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+        },
+        USER_ID
+      );
+      setShowThankYou(true);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: "",
+      });
+    } catch (error) {
+      alert("Failed to send message. Please try again later.");
+    }
     setIsSubmitting(false);
-    setShowThankYou(true);
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: ''
-    });
   };
 
   return (
@@ -58,7 +88,8 @@ export function ContactForm() {
         <CardHeader>
           <CardTitle>Get Your Free Consultation Today</CardTitle>
           <p className="text-muted-foreground">
-            Ready to streamline your business and finances? Contact our team for professional services tailored to your business.
+            Ready to streamline your business and finances? Contact our team for
+            professional services tailored to your business.
           </p>
         </CardHeader>
         <CardContent>
@@ -70,7 +101,7 @@ export function ContactForm() {
                   id="name"
                   type="text"
                   value={formData.name}
-                  onChange={(e) => handleInputChange('name', e.target.value)}
+                  onChange={(e) => handleInputChange("name", e.target.value)}
                   required
                   className="w-full"
                 />
@@ -81,7 +112,7 @@ export function ContactForm() {
                   id="email"
                   type="email"
                   value={formData.email}
-                  onChange={(e) => handleInputChange('email', e.target.value)}
+                  onChange={(e) => handleInputChange("email", e.target.value)}
                   required
                   className="w-full"
                 />
@@ -95,13 +126,18 @@ export function ContactForm() {
                   id="phone"
                   type="tel"
                   value={formData.phone}
-                  onChange={(e) => handleInputChange('phone', e.target.value)}
+                  onChange={(e) => handleInputChange("phone", e.target.value)}
                   className="w-full"
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="service">Service Needed</Label>
-                <Select value={formData.service} onValueChange={(value: any) => handleInputChange('service', value)}>
+                <Select
+                  value={formData.service}
+                  onValueChange={(value: any) =>
+                    handleInputChange("service", value)
+                  }
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>
@@ -121,25 +157,41 @@ export function ContactForm() {
               <Textarea
                 id="message"
                 value={formData.message}
-                onChange={(e) => handleInputChange('message', e.target.value)}
+                onChange={(e) => handleInputChange("message", e.target.value)}
                 required
                 rows={4}
                 className="w-full"
               />
             </div>
 
-            {/* Captcha Placeholder */}
+
+            {/* Simple 'I am not a robot' checkbox */}
             <div className="flex items-center space-x-2 p-4 bg-muted/30 rounded-lg border border-dashed">
-              <Shield className="h-5 w-5 text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">Captcha verification would be here</span>
+              <input
+                type="checkbox"
+                id="humanCheck"
+                checked={isHuman}
+                onChange={(e) => setIsHuman(e.target.checked)}
+                className="h-5 w-5"
+                required
+              />
+              <Label htmlFor="humanCheck" className="text-sm text-muted-foreground">
+                I am not a robot
+              </Label>
             </div>
 
-            <Button 
-              type="submit" 
-              disabled={isSubmitting || !formData.name || !formData.email || !formData.message}
+            <Button
+              type="submit"
+              disabled={
+                isSubmitting ||
+                !formData.name ||
+                !formData.email ||
+                !formData.message ||
+                !isHuman
+              }
               className="w-full"
             >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
+              {isSubmitting ? "Sending..." : "Send Message"}
             </Button>
           </form>
         </CardContent>
@@ -152,15 +204,16 @@ export function ContactForm() {
             <div className="mx-auto mb-4 h-12 w-12 rounded-full bg-green-100 flex items-center justify-center">
               <CheckCircle className="h-8 w-8 text-green-600" />
             </div>
-            <DialogTitle>Thank You for Reaching Out!</DialogTitle>
+            <DialogTitle className="text-center">
+              Thank You for Reaching Out!
+            </DialogTitle>
             <DialogDescription className="text-center">
-              We've received your message and one of our team members will get back to you within 24 hours.
+              We've received your message and one of our team members will get
+              back to you within 24 hours.
             </DialogDescription>
           </DialogHeader>
           <div className="flex justify-center mt-6">
-            <Button onClick={() => setShowThankYou(false)}>
-              Close
-            </Button>
+            <Button onClick={() => setShowThankYou(false)}>Close</Button>
           </div>
         </DialogContent>
       </Dialog>
