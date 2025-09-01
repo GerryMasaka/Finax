@@ -1,5 +1,4 @@
 import { Button } from './ui/button';
-import { Card, CardContent } from './ui/card';
 import { ServiceCard } from './ServiceCard';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { 

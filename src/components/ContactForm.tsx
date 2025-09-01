@@ -19,7 +19,7 @@ import {
   DialogTitle,
 } from "./ui/dialog";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { CheckCircle, Shield } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);

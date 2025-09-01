@@ -105,9 +105,7 @@ ${colorConfig
 const ChartTooltip = RechartsPrimitive.Tooltip;
 
 function ChartTooltipContent({
-  active,
   payload = [],
-  className,
   indicator = "dot",
   hideLabel = false,
   hideIndicator = false,

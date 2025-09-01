@@ -1,6 +1,5 @@
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Badge } from './ui/badge';
 import { Check, ArrowRight } from 'lucide-react';
 
 export function ServicesPage() {
@@ -164,7 +163,7 @@ export function ServicesPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="space-y-20">
-            {services.map((service, index) => (
+            {services.map((service) => (
               <div key={service.id} id={service.id} className="scroll-mt-20">
                 <Card className="overflow-hidden">
                   <CardHeader className="bg-muted/30">
