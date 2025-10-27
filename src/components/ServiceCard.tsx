@@ -25,15 +25,16 @@ export function ServiceCard({ title, description, icon, onMoreClick, className =
         <CardDescription className="flex-1 mb-4 text-sm leading-relaxed">
           {description}
         </CardDescription>
-        <Button 
-          variant="outline" 
-          size="sm"
-          onClick={onMoreClick}
-          className="self-start group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
-        >
-          More
-          <ArrowRight className="ml-2 h-3 w-3" />
-        </Button>
+         <Button 
+           variant="outline" 
+           size="sm"
+           onClick={onMoreClick}
+           className="self-start more-btn transition-colors"
+           style={{ backgroundColor: '#0C5B69', color: '#FFFFFF' }}
+         >
+           More
+           <ArrowRight className="ml-2 h-3 w-3" />
+         </Button>
       </CardContent>
     </Card>
   );

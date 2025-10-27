@@ -18,7 +18,15 @@ export function ImageWithFallback(props: React.ImgHTMLAttributes<HTMLImageElemen
       style={style}
     >
       <div className="flex items-center justify-center w-full h-full">
-        <img src={ERROR_IMG_SRC} alt="Error loading image" {...rest} data-original-url={src} />
+        {/* Ensure fallback img receives same className/style/rest so transforms/object-position still apply */}
+        <img
+          src={ERROR_IMG_SRC}
+          alt="Error loading image"
+          className={className}
+          style={style}
+          {...rest}
+          data-original-url={src}
+        />
       </div>
     </div>
   ) : (

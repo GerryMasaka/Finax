@@ -1708,7 +1708,16 @@
   }
 
   .bg-green-600 {
-    background-color: var(--color-green-600);
+    background-color: var(--color-white);
+  }
+
+  .expert-button:hover {
+    background-color: var(--color-green-600) !important;
+  }
+
+  .expert-button {
+    background-color: var(--primary) !important;
+    color: var(--color-white) !important;
   }
 
   .bg-input-background {
@@ -1745,6 +1754,18 @@
 
   .bg-primary {
     background-color: #0C5B69;
+  }
+
+  .bg-primary-hover {
+    background-color: #195b64;
+  }
+
+  .text-primary {
+    color: #0C5B69;
+  }
+
+  .more-btn:hover {
+    background-color: #0f6f7c !important;
   }
 
   .bg-primary-foreground\/10 {
@@ -2146,6 +2167,10 @@
 
   .text-green-600 {
     color: var(--color-green-600);
+  }
+
+  .text-white-600 {
+    color: var(--color-white);
   }
 
   .text-green-700 {
@@ -4074,11 +4099,11 @@
     }
   }
 
-  @media (width >= 64rem) {
+  /* @media (width >= 64rem) {
     .lg\:pt-20 {
       padding-top: calc(var(--spacing) * 20);
     }
-  }
+  } */
 
   @media (width >= 64rem) {
     .lg\:text-2xl {
@@ -4620,10 +4645,10 @@
   --background: #fff;
   --foreground: oklch(.145 0 0);
   --card: #fff;
-  --card-foreground: oklch(.145 0 0);
+  --card-foreground: #0C5B69;
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(.145 0 0);
-  --primary: #030213;
+  --primary: #0C5B69;
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(.95 .0058 264.53);
   --secondary-foreground: #030213;

@@ -1,4 +1,4 @@
-import { Phone, Mail, MessageCircle, Facebook, Twitter, Instagram, Linkedin, Youtube, Send } from 'lucide-react';
+import { Phone, Mail, MessageCircle, MapPin, Facebook, Instagram, Linkedin, Youtube, X } from 'lucide-react';
 
 import { Link } from 'react-router-dom';
 
@@ -22,9 +22,8 @@ export function Footer() {
 
   const socialLinks = [
     { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'X' },
+    { icon: X, href: '#', label: 'X' },
     { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Send, href: '#', label: 'Telegram' },
     { icon: Youtube, href: '#', label: 'YouTube' },
     { icon: Linkedin, href: '#', label: 'LinkedIn' }
   ];
@@ -108,8 +107,21 @@ export function Footer() {
                 className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <MessageCircle className="h-4 w-4" />
-                <span>+254 729 500 700</span>
+                <span>WhatsApp</span>
               </a>
+              {/* Office location (clickable) */}
+              <div className="pt-2">
+                <a
+                  href="https://maps.google.com/?q=WestPark+Towers,+Mpesi+Lane,+Off+Muthithi+Road,+Westlands,+Nairobi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                  aria-label="Open Finax Consult Limited location in Google Maps"
+                >
+                  <MapPin className="h-4 w-4 mt-0.5" />
+                  <span>Finax Consult Limited — Nairobi, Kenya</span>
+                </a>
+              </div>
             </div>
           </div>
 

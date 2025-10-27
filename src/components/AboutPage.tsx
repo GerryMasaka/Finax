@@ -1,76 +1,96 @@
-import { Button } from './ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Badge } from './ui/badge';
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { Button } from "./ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 // import { ImageWithFallback } from './figma/ImageWithFallback';
-import { 
-  Target, 
-  Eye, 
-  Heart, 
-  CheckCircle, 
-  Users, 
+import {
+  Target,
+  Eye,
+  Heart,
+  CheckCircle,
+  Users,
   Award,
   ArrowRight,
-  Mail,
-  Linkedin
-} from 'lucide-react';
+} from "lucide-react";
 
 export function AboutPage() {
   const whyChooseUsPoints = [
     {
       icon: <Award className="h-6 w-6" />,
-      title: 'Expertise',
-      description: 'Over 15 years of combined experience in accounting, taxation, and business advisory services across diverse industries.'
+      title: "Expertise",
+      description:
+        "Over 15 years of combined experience in accounting, taxation, and business advisory services across diverse industries.",
     },
     {
       icon: <Users className="h-6 w-6" />,
-      title: 'Personalized Service',
-      description: 'Tailored solutions that fit your unique business needs, from startups to established corporations.'
+      title: "Personalized Service",
+      description:
+        "Tailored solutions that fit your unique business needs, from startups to established corporations.",
     },
     {
       icon: <Eye className="h-6 w-6" />,
-      title: 'Clarity & Empowerment',
-      description: 'We simplify complex financial concepts and empower you with the knowledge to make informed decisions.'
+      title: "Clarity & Empowerment",
+      description:
+        "We simplify complex financial concepts and empower you with the knowledge to make informed decisions.",
     },
     {
       icon: <CheckCircle className="h-6 w-6" />,
-      title: 'Partner in Growth',
-      description: 'We are committed to your long-term success, providing ongoing support as your business evolves.'
-    }
+      title: "Partner in Growth",
+      description:
+        "We are committed to your long-term success, providing ongoing support as your business evolves.",
+    },
   ];
 
   const values = [
     {
-      title: 'Integrity',
-      description: 'We uphold the highest ethical standards in everything we do.'
+      title: "Integrity",
+      description:
+        "We uphold the highest ethical standards in everything we do.",
     },
     {
-      title: 'Excellence',
-      description: 'We deliver accurate, timely, and professional services you can rely on.'
+      title: "Excellence",
+      description:
+        "We deliver accurate, timely, and professional services you can rely on.",
     },
     {
-      title: 'Client-Centered',
-      description: 'We build long-term relationships and provide solutions that fit your unique needs.'
+      title: "Client-Centered",
+      description:
+        "We build long-term relationships and provide solutions that fit your unique needs.",
     },
     {
-      title: 'Innovation',
-      description: 'We embrace technology and modern practices to make accounting smarter and simpler.'
+      title: "Innovation",
+      description:
+        "We embrace technology and modern practices to make accounting smarter and simpler.",
     },
     {
-      title: 'Accountability',
-      description: 'We take ownership of our work and deliver results with transparency.'
-    }
+      title: "Accountability",
+      description:
+        "We take ownership of our work and deliver results with transparency.",
+    },
   ];
 
   return (
     <div className="pt-16 lg:pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-background to-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto">
+      <section
+        className="relative min-h-[95vh] lg:min-h-screen flex items-center overflow-hidden"
+        style={{ height: "600px" }}
+      >
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <ImageWithFallback
+            src="/Finax/AboutFinaxConsult.jpg"
+            alt="Services Background"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: "50% 28%" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-background/95 to-muted/70" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10 py-20">
+          <div className="text-center max-w-4xl mx-auto backdrop-blur-bg bg-black/40 rounded-xl px-6 py-8 shadow-2xl p-8">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
-              About Finax Consult Limited
+              Who We Are
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-xl text-white leading-relaxed">
               Your trusted partner in financial clarity and business growth
               across Kenya.
             </p>
@@ -137,17 +157,22 @@ export function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {whyChooseUsPoints.map((point, index) => (
-              <Card key={index} className="text-center h-full">
+              <Card
+                key={index}
+                className="text-center h-full"
+                style={{ backgroundColor: "#0C5B69", color: "#FFFFFF" }}
+              >
                 <CardHeader>
-                  <div className="mx-auto mb-4 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <div className="text-primary">{point.icon}</div>
+                  <div
+                    className="mx-auto mb-4 w-12 h-12 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: "#73d6e3ff" }}
+                  >
+                    <div>{point.icon}</div>
                   </div>
                   <CardTitle className="text-lg">{point.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {point.description}
-                  </p>
+                <CardContent style={{ color: "#FFFFFF" }}>
+                  <p className="text-sm leading-relaxed">{point.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -189,19 +214,19 @@ export function AboutPage() {
       </section>
 
       {/* Founder Section */}
-      <section className="py-20 bg-muted/30">
+      {/* <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Card className="overflow-hidden">
               <CardContent className="p-0">
                 <div className="grid grid-cols-1 lg:grid-cols-1">
-                  {/* <div className="relative h-80 lg:h-auto">
+                  <div className="relative h-80 lg:h-auto">
                     <ImageWithFallback
-                      src="https://images.unsplash.com/photo-1731093714827-ba0353e09bfb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBhZnJpY2FuJTIwYnVzaW5lc3NtYW4lMjBwb3J0cmFpdHxlbnwxfHx8fDE3NTYzNTk4NzV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                      src=""
                       alt="Eddie Omoyo - Founder & Lead Consultant"
                       className="w-full h-full object-cover"
                     />
-                  </div> */}
+                  </div>
                   <div className="p-8 lg:p-12 flex flex-col justify-center">
                     <div className="space-y-4">
                       <div>
@@ -251,7 +276,7 @@ export function AboutPage() {
             </Card>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-20 bg-primary text-primary-foreground">

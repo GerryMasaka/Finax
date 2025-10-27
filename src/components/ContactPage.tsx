@@ -9,6 +9,7 @@ import {
   Clock,
   ExternalLink,
 } from "lucide-react";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export function ContactPage() {
   const contactMethods = [
@@ -51,94 +52,121 @@ export function ContactPage() {
   return (
     <div className="pt-16 lg:pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-background to-muted/30">
-        <div className="container mx-auto px-4">
+      <section
+        className="relative min-h-[95vh] lg:min-h-screen flex items-center overflow-hidden"
+        style={{ height: "600px" }}
+      >
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <ImageWithFallback
+            src="/Finax/touching-mobile-phone.jpg"
+            alt="Services Background"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: "40% 25%" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-background/95 to-muted/70" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10 py-20">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
-              Get Your Free Consultation Today
-            </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              Ready to streamline your business and finances? Contact our team
-              for professional services tailored to your business needs.
-            </p>
+            {/* Backdrop behind hero text to improve readability */}
+            <div className="mx-auto w-full md:w-auto relative z-20 bg-black/80 backdrop-blur-sm rounded-xl px-6 py-8 shadow-2xl">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
+                Get Your Free Consultation Today
+              </h1>
+              <p className="text-xl text-white leading-relaxed" style={{fontSize: '20px'}}>
+                Ready to streamline your business and finances? Contact our team
+                for professional services tailored to your business needs.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Methods */}
-      <section className="py-20">
+      {/* Combined Contact & Form Section */}
+      <section id="contact-combined" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {contactMethods.map((method, index) => (
-              <Card
-                key={index}
-                className="text-center h-full group hover:shadow-lg transition-all duration-300"
-              >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            {/* Left column: Contact Form */}
+            <div>
+              <Card className="h-full">
                 <CardHeader>
-                  <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    <div className="text-primary group-hover:text-primary-foreground transition-colors">
-                      {method.icon}
-                    </div>
-                  </div>
-                  <CardTitle className="text-lg">{method.title}</CardTitle>
+                  {/* <CardTitle>Contact Us</CardTitle> */}
                 </CardHeader>
-                <CardContent className="space-y-2">
-                  <a
-                    href={method.href}
-                    target={
-                      method.href.startsWith("http") ? "_blank" : undefined
-                    }
-                    rel={
-                      method.href.startsWith("http")
-                        ? "noopener noreferrer"
-                        : undefined
-                    }
-                    className="block font-medium text-primary hover:opacity-80 transition-opacity"
+                <CardContent>
+                  <ContactForm />
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Right column: Contacts (top) and Business Hours (bottom) */}
+            <div className="h-full flex flex-col gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 gap-6 auto-rows-fr items-stretch">
+                {contactMethods.map((method, index) => (
+                  <Card
+                    key={index}
+                    className="text-center h-full w-full group hover:shadow-lg transition-all duration-300"
                   >
-                    {method.value}
-                  </a>
-                  <p className="text-sm text-muted-foreground">
-                    {method.description}
+                    <CardHeader>
+                      <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                        <div className="text-primary group-hover:text-primary-foreground transition-colors">
+                          {method.icon}
+                        </div>
+                      </div>
+                      <CardTitle className="text-lg">{method.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2">
+                      <a
+                        href={method.href}
+                        target={
+                          method.href.startsWith("http") ? "_blank" : undefined
+                        }
+                        rel={
+                          method.href.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                        className="block font-medium text-primary hover:opacity-80 transition-opacity"
+                      >
+                        {method.value}
+                      </a>
+                      <p className="text-sm text-muted-foreground">
+                        {method.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              <Card className="mt-auto">
+                <CardHeader className="text-center">
+                  <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                    <Clock className="h-6 w-6 text-primary" />
+                  </div>
+                  <CardTitle>Business Hours</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {businessHours.map((schedule, index) => (
+                      <div
+                        key={index}
+                        className="flex justify-between items-center"
+                      >
+                        <span className="text-sm font-medium">
+                          {schedule.day}
+                        </span>
+                        <span className="text-sm text-muted-foreground">
+                          {schedule.hours}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-4 text-center">
+                    * Office visits by appointment only
                   </p>
                 </CardContent>
               </Card>
-            ))}
+            </div>
           </div>
-
-          {/* Business Hours */}
-          <Card className="max-w-md mx-auto mb-16">
-            <CardHeader className="text-center">
-              <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <Clock className="h-6 w-6 text-primary" />
-              </div>
-              <CardTitle>Business Hours</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                {businessHours.map((schedule, index) => (
-                  <div
-                    key={index}
-                    className="flex justify-between items-center"
-                  >
-                    <span className="text-sm font-medium">{schedule.day}</span>
-                    <span className="text-sm text-muted-foreground">
-                      {schedule.hours}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <p className="text-xs text-muted-foreground mt-4 text-center">
-                * Office visits by appointment only
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Contact Form */}
-      <section id="contact-form" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <ContactForm />
         </div>
       </section>
 
@@ -157,15 +185,15 @@ export function ContactPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Location Details */}
-            <div className="space-y-6">
-              <Card>
+            <div className="h-full min-h-[450px] flex flex-col justify-stretch space-y-6">
+              <Card className="h-full min-h-[450px] flex flex-col">
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
                     <MapPin className="h-5 w-5 text-primary" />
                     <span>Office Address</span>
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 flex-1 flex flex-col justify-between">
                   <div>
                     <p className="font-medium text-primary">
                       Finax Consult Limited
@@ -180,7 +208,6 @@ export function ContactPage() {
                       Kenya
                     </p>
                   </div>
-
                   <Button
                     variant="outline"
                     onClick={() =>
@@ -189,49 +216,20 @@ export function ContactPage() {
                         "_blank"
                       )
                     }
-                    className="w-full"
+                    className="w-full mt-4 bg-primary text-primary-foreground hover:bg-primary-hover"
                   >
                     Get Directions
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </Button>
                 </CardContent>
               </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>Getting Here</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div>
-                    <h4 className="font-medium text-primary mb-2">
-                      By Public Transport
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      Take a matatu to Westlands and alight at the Westlands
-                      roundabout. WestPark Towers is a short walk from the main
-                      road.
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-primary mb-2">
-                      By Private Vehicle
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      Parking is available within the building. Enter through
-                      the main gate and follow signs to visitor parking.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
 
             {/* Map Placeholder */}
-            <div className="h-full">
-              <Card className="h-full min-h-[400px]">
-                <CardContent className="p-0 h-full">
-                  <div
-                    style={{ width: "100%", height: "450px", margin: "2rem 0" }}
-                  >
+            <div className="h-full min-h-[450px] flex flex-col justify-stretch">
+              <Card className="h-full min-h-[450px] flex flex-col">
+                <CardContent className="p-0 h-full flex-1 flex flex-col justify-center">
+                  <div style={{ width: "100%", height: "100%" }}>
                     <iframe
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.846504073192!2d36.804485974965665!3d-1.2646255987233344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f176afe68fe1b%3A0xf590c6d95ac4594f!2sWestpark%20Towers!5e0!3m2!1sen!2ske!4v1756633545039!5m2!1sen!2ske"
                       width="100%"

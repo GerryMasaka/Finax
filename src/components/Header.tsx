@@ -44,7 +44,7 @@ export function Header() {
                 className="hover:opacity-80 transition-opacity"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
-                <img src="/header.png" alt="Finax Header" className="h-10 lg:h-14 w-auto" />
+              <img src="/finax.png" alt="Finax Header" className="h-16 lg:h-20 w-auto" />
               </Link>
           </div>
 
@@ -74,7 +74,7 @@ export function Header() {
             </a>
             <Button 
               size="sm"
-              onClick={() => scrollToSection('contact-form')}
+              onClick={() => window.location.assign("/contact")}
             >
               Book an appointment
             </Button>

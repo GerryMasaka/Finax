@@ -13,7 +13,7 @@ export default function App() {
     <BrowserRouter>
       <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="flex-1 pt-16 lg:pt-20">
+        <main className="flex-1 pt-1 lg:pt-4">
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/services" element={<ServicesPage />} />
