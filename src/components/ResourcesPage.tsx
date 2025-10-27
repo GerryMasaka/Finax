@@ -1,15 +1,13 @@
 import { Button } from "./ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent } from "./ui/card";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
-import { Badge } from "./ui/badge";
 import {
   MessageCircle,
-  FileText,
   HelpCircle,
   ExternalLink,
   ArrowRight,
@@ -56,28 +54,28 @@ export function ResourcesPage() {
     },
   ];
 
-  const upcomingResources = [
-    {
-      title: "Monthly Financial Health Checklist",
-      description:
-        "A comprehensive guide to monitoring your business financial health",
-      type: "Guide",
-      status: "Coming Soon",
-    },
-    {
-      title: "Kenyan Tax Calendar 2024",
-      description:
-        "Important tax dates and deadlines for businesses and individuals",
-      type: "Calendar",
-      status: "Coming Soon",
-    },
-    {
-      title: "Small Business Financial Planning Template",
-      description: "Excel template for budgeting and financial projections",
-      type: "Template",
-      status: "Coming Soon",
-    },
-  ];
+  // const upcomingResources = [
+  //   {
+  //     title: "Monthly Financial Health Checklist",
+  //     description:
+  //       "A comprehensive guide to monitoring your business financial health",
+  //     type: "Guide",
+  //     status: "Coming Soon",
+  //   },
+  //   {
+  //     title: "Kenyan Tax Calendar 2024",
+  //     description:
+  //       "Important tax dates and deadlines for businesses and individuals",
+  //     type: "Calendar",
+  //     status: "Coming Soon",
+  //   },
+  //   {
+  //     title: "Small Business Financial Planning Template",
+  //     description: "Excel template for budgeting and financial projections",
+  //     type: "Template",
+  //     status: "Coming Soon",
+  //   },
+  // ];
 
   return (
     <div className="pt-16 lg:pt-20">
