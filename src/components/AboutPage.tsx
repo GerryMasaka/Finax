@@ -86,7 +86,7 @@ export function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-background/95 to-muted/70" />
         </div>
         <div className="container mx-auto px-4 relative z-10 py-20">
-          <div className="text-center max-w-4xl mx-auto backdrop-blur-bg bg-black/40 rounded-xl px-6 py-8 shadow-2xl p-8">
+          <div className="text-center max-w-4xl mx-auto backdrop-blur bg-black/40 rounded-xl px-6 py-8 shadow-2xl p-8">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
               Who We Are
             </h1>
