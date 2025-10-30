@@ -172,19 +172,20 @@ export function ServicesPage() {
         </div>
 
         {/* Content */}
-        <div className="container mx-auto px-4 relative z-10 py-20">
+        <div className="container mx-auto px-4 relative z-10 py-20 ">
           <div className="text-center max-w-4xl mx-auto backdrop-blur-sm bg-black/40 rounded-xl px-6 py-8 shadow-2xl mb-8">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
               What We Offer
             </h1>
             <p className="text-xl text-white leading-relaxed mb-8">
               Comprehensive accounting and advisory solutions tailored for
-              individuals, startups, SMEs, and established corporations in
+              individuals, startups, SMEs, NGOs and corporations in
               Kenya. We provide the expertise you need to grow with confidence.
             </p>
             <Button
               size="lg"
               onClick={() => window.location.assign("/contact")}
+              className="p-4 mb-4"
             >
               Request a Consultation
             </Button>

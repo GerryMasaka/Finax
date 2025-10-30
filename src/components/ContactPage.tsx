@@ -6,7 +6,7 @@ import {
   Mail,
   MessageCircle,
   MapPin,
-  Clock,
+  // Clock,
   ExternalLink,
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
@@ -23,8 +23,8 @@ export function ContactPage() {
     {
       icon: <Mail className="h-6 w-6" />,
       title: "Email",
-      value: "info@finax.co.ke",
-      href: "mailto:info@finax.co.ke",
+      value: "connect@finax.co.ke",
+      href: "mailto:connect@finax.co.ke",
       description: "Send us a detailed message",
     },
     {
@@ -43,11 +43,11 @@ export function ContactPage() {
     },
   ];
 
-  const businessHours = [
-    { day: "Monday - Friday", hours: "8:00 AM - 6:00 PM" },
-    { day: "Saturday", hours: "9:00 AM - 2:00 PM" },
-    { day: "Sunday", hours: "Closed" },
-  ];
+  // const businessHours = [
+  //   { day: "Monday - Friday", hours: "8:00 AM - 6:00 PM" },
+  //   { day: "Saturday", hours: "9:00 AM - 2:00 PM" },
+  //   { day: "Sunday", hours: "Closed" },
+  // ];
 
   return (
     <div className="pt-16 lg:pt-20">
@@ -59,10 +59,10 @@ export function ContactPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <ImageWithFallback
-            src="/Finax/touching-mobile-phone.jpg"
+            src="/Finax/Contact Us.jpg"
             alt="Services Background"
             className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: "40% 25%" }}
+            style={{ objectPosition: "40% 48%" }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-background/95 to-muted/70" />
         </div>
@@ -73,7 +73,7 @@ export function ContactPage() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
                 Get Your Free Consultation Today
               </h1>
-              <p className="text-xl text-white leading-relaxed" style={{fontSize: '20px'}}>
+              <p className="text-xl text-white leading-relaxed mb-4 p-4" style={{fontSize: '20px'}}>
                 Ready to streamline your business and finances? Contact our team
                 for professional services tailored to your business needs.
               </p>
@@ -137,7 +137,7 @@ export function ContactPage() {
                 ))}
               </div>
 
-              <Card className="mt-auto">
+              {/* <Card className="mt-auto">
                 <CardHeader className="text-center">
                   <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
                     <Clock className="h-6 w-6 text-primary" />
@@ -164,7 +164,7 @@ export function ContactPage() {
                     * Office visits by appointment only
                   </p>
                 </CardContent>
-              </Card>
+              </Card> */}
             </div>
           </div>
         </div>
@@ -178,8 +178,7 @@ export function ContactPage() {
               Our Location
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Located in the heart of Westlands, Nairobi, our office is easily
-              accessible by public transport and private vehicle.
+              Our office is conveniently situated in the heart of Westlands, Nairobi.
             </p>
           </div>
 

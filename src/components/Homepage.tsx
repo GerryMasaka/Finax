@@ -88,7 +88,7 @@ export function Homepage() {
   return (
     <div className="pt-16 lg:pt-20">
       {/* Hero Section */}
-      <section className="py-20 lg:py-32 relative min-h-[85vh] lg:min-h-[90vh] flex items-center overflow-hidden" style={{height: '600px'}}>
+  <section className="py-20 lg:py-32 relative min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden" style={{height: '600px'}}>
         {/* Background Image Carousel */}
         <div className="absolute inset-0 z-0">
           {bannerImages.map((src, i) => (
@@ -109,25 +109,26 @@ export function Homepage() {
         </div>
 
         {/* Content */}
-        <div className="container mx-auto px-4 relative z-10 py-20">
+        <div className="container mx-auto px-4 relative z-10 py-20 flex items-center justify-center h-full">
           <div className="max-w-3xl">
             <div className="inline-block bg-black/45 backdrop-blur-sm rounded-xl px-6 py-8 shadow-2xl" >
               <div className="space-y-4">
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-4">
                   Simplifying Finance, Empowering Growth.
                 </h1>
-                <h2 className="text-xl md:text-2xl text-white mb-8" >
-                  Providing Financial Clarity for Sustainable Growth.
-                </h2>
               </div>
 
               <p className="text-lg text-white leading-relaxed" >
                 At Finax Consult, we make finance simple so you can focus on
                 what matters most - growing your business. With expert
                 accounting, tax, payroll, and advisory services tailored for
-                individuals, SME's and corporates, we help you unlock
+                individuals, SMEs and corporates, we help you unlock
                 opportunities while staying compliant.
               </p>
+
+              <h2 className="text-xl md:text-2xl text-white mb-8 mt-4" >
+                  We Provide Financial Clarity for Sustainable Growth.
+              </h2>
 
               <div className="flex flex-col sm:flex-row gap-4 mt-6 mb-4">
                 <Button
@@ -151,7 +152,7 @@ export function Homepage() {
           </div>
 
           {/* Carousel Indicators */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          {/* <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
             {bannerImages.map((_, i) => (
               <button
                 key={i}
@@ -167,7 +168,7 @@ export function Homepage() {
                 aria-label={`Show banner ${i + 1}`}
               />
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -180,7 +181,7 @@ export function Homepage() {
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               We provide a full range of accounting and advisory solutions
-              tailored for individuals, startups, SMEs, and established
+              tailored for individuals, startups, SMEs, NGOs and
               corporations in Kenya, ensuring your financial success at every
               stage of growth.
             </p>
@@ -282,11 +283,11 @@ export function Homepage() {
               <span className="font-medium">+254 729 500 700</span>
             </a>
             <a
-              href="mailto:info@finax.co.ke"
+              href="mailto:connect@finax.co.ke"
               className="flex items-center justify-center space-x-3 p-4 bg-primary-foreground/10 rounded-lg hover:bg-primary-foreground/20 transition-colors"
             >
               <Mail className="h-5 w-5" />
-              <span className="font-medium">info@finax.co.ke</span>
+              <span className="font-medium">connect@finax.co.ke</span>
             </a>
             <a
               href="https://wa.me/254729500700"

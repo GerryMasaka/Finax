@@ -33,7 +33,7 @@ export default function App() {
                         </p>
                         <p className="text-muted-foreground">
                           <strong>Contact us:</strong><br />
-                          Email: info@finax.co.ke<br />
+                          Email: connect@finax.co.ke<br />
                           Phone: +254 729 500 700
                         </p>
                       </div>

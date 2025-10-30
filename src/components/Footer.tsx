@@ -94,11 +94,11 @@ export function Footer() {
                 <span>+254 729 500 700</span>
               </a>
               <a 
-                href="mailto:info@finax.co.ke"
+                href="mailto:connect@finax.co.ke"
                 className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail className="h-4 w-4" />
-                <span>info@finax.co.ke</span>
+                <span>connect@finax.co.ke</span>
               </a>
               <a 
                 href="https://wa.me/254729500700"
