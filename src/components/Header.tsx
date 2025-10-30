@@ -44,7 +44,13 @@ export function Header() {
                 className="hover:opacity-80 transition-opacity"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
-              <img src="/finax.png" alt="Finax Header" className="h-16 lg:h-20 w-auto" />
+              <img
+                src="/finax.png"
+                alt="Finax Header"
+                className="h-16 lg:h-20 w-auto"
+                loading="eager"
+                decoding="async"
+              />
               </Link>
           </div>
 
