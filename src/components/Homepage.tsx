@@ -88,7 +88,10 @@ export function Homepage() {
   return (
     <div className="pt-16 lg:pt-20">
       {/* Hero Section */}
-  <section className="py-20 lg:py-32 relative min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden" style={{height: '600px'}}>
+      <section
+        className="py-20 lg:py-32 relative min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden"
+        style={{ height: "600px" }}
+      >
         {/* Background Image Carousel */}
         <div className="absolute inset-0 z-0">
           {bannerImages.map((src, i) => (
@@ -100,8 +103,10 @@ export function Homepage() {
               style={{
                 opacity: currentIndex === i ? 1 : 0,
                 transition: "opacity 700ms ease",
-                objectPosition: '50% 40%',
+                objectPosition: "50% 40%",
               }}
+              loading={currentIndex === i ? "eager" : "lazy"}
+              fetchPriority={currentIndex === i ? "high" : "auto"}
             />
           ))}
           {/* Overlay for better text readability */}
@@ -111,14 +116,14 @@ export function Homepage() {
         {/* Content */}
         <div className="container mx-auto px-4 relative z-10 py-20 flex items-center justify-center h-full">
           <div className="max-w-3xl">
-            <div className="inline-block bg-black/45 backdrop-blur-sm rounded-xl px-6 py-8 shadow-2xl" >
+            <div className="inline-block bg-black/45 backdrop-blur-sm rounded-xl px-6 py-8 shadow-2xl">
               <div className="space-y-4">
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-4">
                   Simplifying Finance, Empowering Growth.
                 </h1>
               </div>
 
-              <p className="text-lg text-white leading-relaxed" >
+              <p className="text-lg text-white leading-relaxed">
                 At Finax Consult, we make finance simple so you can focus on
                 what matters most - growing your business. With expert
                 accounting, tax, payroll, and advisory services tailored for
@@ -126,15 +131,15 @@ export function Homepage() {
                 opportunities while staying compliant.
               </p>
 
-              <h2 className="text-xl md:text-2xl text-white mb-8 mt-4" >
-                  We Provide Financial Clarity for Sustainable Growth.
+              <h2 className="text-xl md:text-2xl text-white mb-8 mt-4">
+                We Provide Financial Clarity for Sustainable Growth.
               </h2>
 
               <div className="flex flex-col sm:flex-row gap-4 mt-6 mb-4">
                 <Button
                   size="lg"
                   onClick={() => window.location.assign("/contact")}
-                  style={{fontSize: '13px'}}
+                  style={{ fontSize: "13px" }}
                 >
                   Book an appointment
                 </Button>
@@ -142,7 +147,7 @@ export function Homepage() {
                   className="hover:bg-primary-foreground hover:text-primary"
                   variant="outline"
                   size="lg"
-                  style={{fontSize: '13px'}}
+                  style={{ fontSize: "13px" }}
                   onClick={() => scrollToSection("services-overview")}
                 >
                   Explore Our Services
@@ -181,9 +186,8 @@ export function Homepage() {
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               We provide a full range of accounting and advisory solutions
-              tailored for individuals, startups, SMEs, NGOs and
-              corporations in Kenya, ensuring your financial success at every
-              stage of growth.
+              tailored for individuals, startups, SMEs, NGOs and corporations in
+              Kenya, ensuring your financial success at every stage of growth.
             </p>
           </div>
 
@@ -229,6 +233,7 @@ export function Homepage() {
                   src="/Finax/About Us Main Page.jpg"
                   alt="Finax Consult - About"
                   className="w-full h-80 lg:h-96 object-cover"
+                  loading="lazy"
                 />
               </div>
             </div>

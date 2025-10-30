@@ -10,7 +10,10 @@ export function ImageWithFallback(props: React.ImgHTMLAttributes<HTMLImageElemen
     setDidError(true)
   }
 
-  const { src, alt, style, className, ...rest } = props
+  // Provide sensible defaults for performance: lazy loading and async decoding
+  const { src, alt, style, className, loading, decoding, ...rest } = props
+  const imgLoading = (loading as "eager" | "lazy" | undefined) ?? "lazy"
+  const imgDecoding = (decoding as "sync" | "async" | "auto" | undefined) ?? "async"
 
   return didError ? (
     <div
@@ -24,12 +27,23 @@ export function ImageWithFallback(props: React.ImgHTMLAttributes<HTMLImageElemen
           alt="Error loading image"
           className={className}
           style={style}
+          loading={imgLoading}
+          decoding={imgDecoding}
           {...rest}
           data-original-url={src}
         />
       </div>
     </div>
   ) : (
-    <img src={src} alt={alt} className={className} style={style} {...rest} onError={handleError} />
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      style={style}
+      loading={imgLoading}
+      decoding={imgDecoding}
+      {...rest}
+      onError={handleError}
+    />
   )
 }
